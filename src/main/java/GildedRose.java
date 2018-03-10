@@ -4,12 +4,9 @@ import java.util.List;
 
 public class GildedRose {
 
-	private static List<Item> items = null;
+	private List<Item> items = null;
 
-	/**
-	 * @param args
-	 */
-	public static void main(String[] args) {
+	public void main(String[] args) {
 		
         System.out.println("OMGHAI!");
 		
@@ -24,9 +21,12 @@ public class GildedRose {
         updateQuality();
 }
 
-
+    public GildedRose (Item item){
+	    items = new ArrayList<>();
+	    items.add(item);
+    }
 	
-    public static void updateQuality()
+    public void updateQuality()
     {
         for (int i = 0; i < items.size(); i++)
         {
