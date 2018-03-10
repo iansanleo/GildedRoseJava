@@ -35,14 +35,17 @@ public class GildedRoseTest {
 	@Test
 	public void QualityDegradesTwice_WhenDatePassed() {
 		//arrange
-		//int daysLess = 1;
-		//int quality = 4;
-		//Item testItem = new Item("name",daysLess, quality);
+		int sellIn = 0;
+		int quality = 4;
+		Item testItem = new Item(" name", sellIn, quality);
+
 		//act
+		GildedRose gR = new GildedRose(testItem);
+		gR.updateQuality();
 
 		//assert
-
-		assertTrue(true);
+		assertEquals(testItem.quality,quality-2);
+		assertEquals(testItem.sellIn, sellIn-1);
 	}
 
 	/*
