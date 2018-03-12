@@ -63,6 +63,23 @@ public class GildedRoseTest {
 		assertFalse(testItem.quality<qualityCero);
 
 	}
+	//"Aged Brie" actually increases in Quality the older it gets
+	@Test
+	public void AgedBrie_increasesQuality(){
+		//arrange
+		String name ="Aged Brie";
+		int iniQuality = 1;
+		Item testItem = new Item(name, 3,iniQuality);
+
+		//act
+		GildedRose gR = new GildedRose(testItem);
+		gR.updateQuality();
+
+		//assert
+		assertTrue(testItem.quality > iniQuality);
+
+	}
+
 	/*
 
 
