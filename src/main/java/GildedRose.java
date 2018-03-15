@@ -133,7 +133,7 @@ public class GildedRose {
                     }
                     else
                     {
-                        items.get(i).setQuality(items.get(i).getQuality() - items.get(i).getQuality());
+                        items.get(i).setQuality(minQuality);
                     }
                 }
                 else
