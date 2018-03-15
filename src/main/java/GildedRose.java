@@ -29,9 +29,13 @@ public class GildedRose {
 	    items.add(item);
     }
 
-    private boolean isLegendary (Item item){
-	    return legendary.contentEquals(item.name);
+    private boolean decreaseDay(Item item){
+	    int actualDays = item.getSellIn();
+	    actualDays--;
+	    item.setSellIn(actualDays);
+	    return true;
     }
+
     private boolean decreaseQuality(Item item){
 	    int quality = item.getQuality();
 	    quality--;
@@ -56,11 +60,16 @@ public class GildedRose {
         }
         return false;
     }
+    private boolean isLegendary (Item item){
+        return legendary.contentEquals(item.name);
+    }
 
 
     public void updateQuality()
     {
-        for (int i = 0; i < items.size(); i++)
+
+        for (int i = 0; i < items.size(); i++){
+
             if(!isBrie(items.get(i))&&! isBackstagePass(items.get(i)))
             {
                 if (items.get(i).getQuality() > minQuality)
@@ -100,7 +109,7 @@ public class GildedRose {
             }
             if(!isLegendary(items.get(i)))
             {
-                items.get(i).setSellIn(items.get(i).getSellIn() - 1);
+                decreaseDay(items.get(i));
             }
 
             if (items.get(i).getSellIn() < 0)
