@@ -47,21 +47,18 @@ public class GildedRose {
             item.setQuality(quality);
         }
     }
+
+    
     private boolean isBrie (Item item){
-	    if(item.name.equals("Aged Brie")){
-	        return true;
-        }
-	    return false;
+	    return item.name.equals("Aged Brie");
     }
     private boolean isBackstagePass (Item item){
-	    if(item.name.equals("Backstage passes to a TAFKAL80ETC concert")){
-	        return true;
-        }
-        return false;
+	    return item.name.equals("Backstage passes to a TAFKAL80ETC concert");
     }
     private boolean isLegendary (Item item){
         return legendary.contentEquals(item.name);
     }
+
 
     private void processDay(Item item){
         if(!isLegendary(item))
@@ -110,7 +107,6 @@ public class GildedRose {
                 if(isBackstagePass(items.get(i)))
                 {
                     process_BaskstagePass_Quality(items.get(i));
-
                }
             }
 
@@ -119,26 +115,22 @@ public class GildedRose {
 
             if (items.get(i).getSellIn() < 0)
             {
-                if (!isBrie(items.get(i)))
+                if (items.get(i).getQuality() > minQuality)
                 {
-                    if(!isBackstagePass(items.get(i)))
+                    if(!isLegendary(items.get(i)))
                     {
-                        if (items.get(i).getQuality() > minQuality)
-                        {
-                            if(!isLegendary(items.get(i)))
-                            {
-                                decreaseQuality(items.get(i));
-                            }
-                        }
-                    }
-                    else
-                    {
-                        items.get(i).setQuality(minQuality);
+                        decreaseQuality(items.get(i));
                     }
                 }
-                else
+
+                if(isBackstagePass(items.get(i)))
                 {
-                        increaseQuality(items.get(i));
+                    items.get(i).setQuality(minQuality);
+                }
+
+                if(isBrie(items.get(i)))
+                {
+                    increaseQuality(items.get(i));
                 }
             }
         }
