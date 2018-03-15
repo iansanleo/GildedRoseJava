@@ -30,6 +30,12 @@ public class GildedRose {
     private boolean isLegendary (Item item){
 	    return legendary.contentEquals(item.name);
     }
+    private boolean decreaseQuality(Item item){
+	    int quality = item.getQuality();
+	    quality--;
+        item.setQuality(quality);
+	    return true;
+    }
 
     public void updateQuality()
     {
@@ -41,7 +47,7 @@ public class GildedRose {
                 {
                     if(!isLegendary(items.get(i)))
                     {
-                        items.get(i).setQuality(items.get(i).getQuality() - 1);
+                        decreaseQuality(items.get(i));
                     }
                 }
             }
@@ -86,7 +92,7 @@ public class GildedRose {
                         {
                             if(!isLegendary(items.get(i)))
                             {
-                                items.get(i).setQuality(items.get(i).getQuality() - 1);
+                                decreaseQuality(items.get(i));
                             }
                         }
                     }
