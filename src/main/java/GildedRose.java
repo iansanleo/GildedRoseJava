@@ -29,12 +29,11 @@ public class GildedRose {
 	    items.add(item);
     }
 
-    private boolean decreaseDay(Item item){
+    private void decreaseDay(Item item){
 	    int actualDays = item.getSellIn();
 	    actualDays--;
 	    item.setSellIn(actualDays);
-	    return true;
-    }
+	}
 
     private void decreaseQuality(Item item){
 	    int quality = item.getQuality();
@@ -107,7 +106,7 @@ public class GildedRose {
             else
             {
                 increaseQuality(items.get(i));
-                
+
                 if(isBackstagePass(items.get(i)))
                 {
                     process_BaskstagePass_Quality(items.get(i));
