@@ -36,6 +36,13 @@ public class GildedRose {
         item.setQuality(quality);
 	    return true;
     }
+    private boolean increaseQuality(Item item){
+        int quality = item.getQuality();
+        quality++;
+        item.setQuality(quality);
+        return true;
+    }
+
 
     public void updateQuality()
     {
@@ -55,7 +62,7 @@ public class GildedRose {
             {
                 if (items.get(i).getQuality() < 50)
                 {
-                    items.get(i).setQuality(items.get(i).getQuality() + 1);
+                    increaseQuality(items.get(i));
 
                     if ("Backstage passes to a TAFKAL80ETC concert".equals(items.get(i).getName()))
                     {
@@ -63,7 +70,7 @@ public class GildedRose {
                         {
                             if (items.get(i).getQuality() < 50)
                             {
-                                items.get(i).setQuality(items.get(i).getQuality() + 1);
+                                increaseQuality(items.get(i));
                             }
                         }
 
@@ -71,7 +78,7 @@ public class GildedRose {
                         {
                             if (items.get(i).getQuality() < 50)
                             {
-                                items.get(i).setQuality(items.get(i).getQuality() + 1);
+                                increaseQuality(items.get(i));
                             }
                         }
                     }
@@ -105,7 +112,7 @@ public class GildedRose {
                 {
                     if (items.get(i).getQuality() < 50)
                     {
-                        items.get(i).setQuality(items.get(i).getQuality() + 1);
+                        increaseQuality(items.get(i));
                     }
                 }
             }
