@@ -145,7 +145,22 @@ public class GildedRoseTest {
         assertTrue(testItem.getQuality() == finalQuality);
     }
     // and by 3 when there are 5 days or less but
+    @Test
+    public void fiveDaysIncreaseQuality_BackstagePasses(){
+        //arrange
+        String name ="Backstage passes to a TAFKAL80ETC concert";
+        int iniSellIn = 5;
+        int iniQuality = 3;
+        int finalQuality = 6;
+        Item testItem = new Item(name,iniSellIn,iniQuality);
 
+        //act
+        GildedRose gR = new GildedRose(testItem);
+        gR.updateQuality();
+
+        //assert
+        assertTrue(testItem.getQuality() == finalQuality);
+    }
 	// Quality drops to 0 after the concert
 
 
