@@ -83,8 +83,8 @@ public class GildedRoseTest {
 	public void QualityUnder_L (){
 		//arrange
 		int topQuality = 50;
-
 		Item testItem = new Item("",2,49);
+
 		//act
 		GildedRose gR = new GildedRose(testItem);
 		gR.updateQuality();
@@ -92,15 +92,25 @@ public class GildedRoseTest {
 		//assert
 		assertTrue(testItem.quality < topQuality);
 	}
+	//"Sulfuras", being a legendary item, never has to be sold or decreases in Quality
+	@Test
+	public void Sulfuras_NoSold_NoDecreaseQuality(){
+		//arrange
+		String name = "Sulfuras, Hand of Ragnaros";
+		int iniQuality = 3;
+		Item testItem = new Item(name,2,iniQuality);
+
+		//act
+		GildedRose gR = new GildedRose(testItem);
+		gR.updateQuality();
+
+		//assert
+		assertTrue(testItem.quality >= iniQuality);
+
+	}
+	//    "Backstage passes", like aged brie, increases in Quality as it's SellIn value approaches;
+	// Quality increases by 2 when there are 10 days or less and by 3 when there are 5 days or less but
+	// Quality drops to 0 after the concert
 
 
-	/*
-
-
-
-
-    "Sulfuras", being a legendary item, never has to be sold or decreases in Quality
-    "Backstage passes", like aged brie, increases in Quality as it's SellIn value approaches; Quality increases by 2 when there are 10 days or less and by 3 when there are 5 days or less but Quality drops to 0 after the concert
-
-	 */
 }
