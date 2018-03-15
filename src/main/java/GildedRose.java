@@ -36,17 +36,11 @@ public class GildedRose {
 	    return true;
     }
 
-    private boolean decreaseQuality(Item item){
+    private void decreaseQuality(Item item){
 	    int quality = item.getQuality();
 	    quality--;
         item.setQuality(quality);
-	    return true;
     }
-    private boolean increaseQuality(Item item){
-        int quality = item.getQuality();
-        quality++;
-        item.setQuality(quality);
-        return true;
     private void increaseQuality(Item item){
         if (item.getQuality() < topQuality) {
             int quality = item.getQuality();
@@ -70,12 +64,11 @@ public class GildedRose {
         return legendary.contentEquals(item.name);
     }
 
-    private boolean processDay(Item item){
+    private void processDay(Item item){
         if(!isLegendary(item))
         {
             decreaseDay(item);
         }
-        return true;
     }
 
     public void updateQuality()
