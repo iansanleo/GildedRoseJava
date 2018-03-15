@@ -71,6 +71,22 @@ public class GildedRose {
         }
     }
 
+    private void process_BaskstagePass_Quality(Item item){
+
+	    if (item.getSellIn() < 11)
+        {
+                increaseQuality(item);
+        }
+
+        if (item.getSellIn() < 6)
+        {
+                increaseQuality(item);
+        }
+
+    }
+
+
+
     public void updateQuality()
     {
 
@@ -78,7 +94,7 @@ public class GildedRose {
 
 
 
-            if(!isBrie(items.get(i))&&! isBackstagePass(items.get(i)))
+            if(!isBrie(items.get(i)) && !isBackstagePass(items.get(i)))
             {
                 if (items.get(i).getQuality() > minQuality)
                 {
@@ -92,25 +108,11 @@ public class GildedRose {
             {
                 increaseQuality(items.get(i));
                 
+                if(isBackstagePass(items.get(i)))
                 {
+                    process_BaskstagePass_Quality(items.get(i));
 
-                    if(isBackstagePass(items.get(i)))
-                    {
-
-                        if (items.get(i).getSellIn() < 11)
-                        {
-                            if (items.get(i).getQuality() < topQuality)
-                            {
-                                increaseQuality(items.get(i));
-                            }
-                        }
-
-                        if (items.get(i).getSellIn() < 6)
-                        {
-
-                        }
-                    }
-                }
+               }
             }
 
             processDay(items.get(i));
