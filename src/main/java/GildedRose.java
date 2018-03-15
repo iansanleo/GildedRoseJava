@@ -64,11 +64,20 @@ public class GildedRose {
         return legendary.contentEquals(item.name);
     }
 
+    private boolean processDay(Item item){
+        if(!isLegendary(item))
+        {
+            decreaseDay(item);
+        }
+        return true;
+    }
 
     public void updateQuality()
     {
 
         for (int i = 0; i < items.size(); i++){
+
+
 
             if(!isBrie(items.get(i))&&! isBackstagePass(items.get(i)))
             {
@@ -88,6 +97,7 @@ public class GildedRose {
 
                     if(isBackstagePass(items.get(i)))
                     {
+
                         if (items.get(i).getSellIn() < 11)
                         {
                             if (items.get(i).getQuality() < topQuality)
@@ -107,10 +117,15 @@ public class GildedRose {
                     }
                 }
             }
-            if(!isLegendary(items.get(i)))
-            {
-                decreaseDay(items.get(i));
-            }
+
+            processDay(items.get(i));
+
+            //if(!isLegendary(items.get(i)))
+            //{
+            //    decreaseDay(items.get(i));
+           // }
+
+
 
             if (items.get(i).getSellIn() < 0)
             {
