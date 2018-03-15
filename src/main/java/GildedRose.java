@@ -6,6 +6,8 @@ public class GildedRose {
 
 	private List<Item> items = null;
     private String legendary = "Sulfuras, Hand of Ragnaros";
+    private int topQuality = 50;
+    private int minQuality = 0;
 
 	public void main(String[] args) {
 		
@@ -50,7 +52,7 @@ public class GildedRose {
         {
             if ((!"Aged Brie".equals(items.get(i).getName())) && !"Backstage passes to a TAFKAL80ETC concert".equals(items.get(i).getName())) 
             {
-                if (items.get(i).getQuality() > 0)
+                if (items.get(i).getQuality() > minQuality)
                 {
                     if(!isLegendary(items.get(i)))
                     {
@@ -60,7 +62,7 @@ public class GildedRose {
             }
             else
             {
-                if (items.get(i).getQuality() < 50)
+                if (items.get(i).getQuality() < topQuality)
                 {
                     increaseQuality(items.get(i));
 
@@ -68,7 +70,7 @@ public class GildedRose {
                     {
                         if (items.get(i).getSellIn() < 11)
                         {
-                            if (items.get(i).getQuality() < 50)
+                            if (items.get(i).getQuality() < topQuality)
                             {
                                 increaseQuality(items.get(i));
                             }
@@ -76,7 +78,7 @@ public class GildedRose {
 
                         if (items.get(i).getSellIn() < 6)
                         {
-                            if (items.get(i).getQuality() < 50)
+                            if (items.get(i).getQuality() < topQuality)
                             {
                                 increaseQuality(items.get(i));
                             }
@@ -95,7 +97,7 @@ public class GildedRose {
                 {
                     if (!"Backstage passes to a TAFKAL80ETC concert".equals(items.get(i).getName()))
                     {
-                        if (items.get(i).getQuality() > 0)
+                        if (items.get(i).getQuality() > minQuality)
                         {
                             if(!isLegendary(items.get(i)))
                             {
@@ -110,7 +112,7 @@ public class GildedRose {
                 }
                 else
                 {
-                    if (items.get(i).getQuality() < 50)
+                    if (items.get(i).getQuality() < topQuality)
                     {
                         increaseQuality(items.get(i));
                     }
