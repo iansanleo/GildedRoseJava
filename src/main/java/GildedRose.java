@@ -48,7 +48,7 @@ public class GildedRose {
         }
     }
 
-    ;
+    
     private boolean isBrie (Item item){
 	    return item.name.equals("Aged Brie");
     }
