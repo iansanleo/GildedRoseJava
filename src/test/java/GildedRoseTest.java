@@ -47,6 +47,7 @@ public class GildedRoseTest {
 		assertEquals(testItem.quality,quality-2);
 		assertEquals(testItem.sellIn, sellIn-1);
 	}
+
 	//The Quality of an item is never negative
 	@Test
 	public void QualityNoNegative() {
@@ -63,6 +64,7 @@ public class GildedRoseTest {
 		assertFalse(testItem.quality<qualityCero);
 
 	}
+
 	//"Aged Brie" actually increases in Quality the older it gets
 	@Test
 	public void AgedBrie_increasesQuality(){
@@ -78,6 +80,7 @@ public class GildedRoseTest {
 		//assert
 		assertTrue(testItem.quality > iniQuality);
 	}
+
 	//The Quality of an item is never more than 50
 	@Test
 	public void QualityUnder_L (){
@@ -92,9 +95,10 @@ public class GildedRoseTest {
 		//assert
 		assertTrue(testItem.quality < topQuality);
 	}
+
 	//"Sulfuras", being a legendary item, never has to be sold or decreases in Quality
 	@Test
-	public void Sulfuras_NoSold_NoDecreaseQuality(){
+	public void Sulfuras_NoDecreaseQuality(){
 		//arrange
 		String name = "Sulfuras, Hand of Ragnaros";
 		int iniQuality = 3;
@@ -106,6 +110,21 @@ public class GildedRoseTest {
 
 		//assert
 		assertTrue(testItem.quality >= iniQuality);
+
+	}
+	@Test
+	public void Sulfuras_NoSold(){
+		//arrange
+		String name = "Sulfuras, Hand of Ragnaros";
+		int iniSell = 1;
+		Item testItem = new Item(name,iniSell,3);
+
+		//act
+		GildedRose gR = new GildedRose(testItem);
+		gR.updateQuality();
+
+		//assert
+		assertTrue(testItem.sellIn  0);
 
 	}
 	//    "Backstage passes", like aged brie, increases in Quality as it's SellIn value approaches;
