@@ -52,16 +52,16 @@ public class GildedRoseTest {
 	@Test
 	public void QualityNoNegative() {
 		//arrange
-		int qualityCero = 0;
-		Item testItem = new Item(" name", 1, qualityCero);
+		int minQuality = 0;
+		Item testItem = new Item(" name", 1, minQuality);
 
 		//act
 		GildedRose gR = new GildedRose(testItem);
 		gR.updateQuality();
 
 		//assert
-		//assertEquals(testItem.quality,qualityCero);
-		assertFalse(testItem.quality<qualityCero);
+		//assertEquals(testItem.quality,minQuality);
+		assertFalse(testItem.quality<minQuality);
 
 	}
 
@@ -124,7 +124,7 @@ public class GildedRoseTest {
 		gR.updateQuality();
 
 		//assert
-		assertTrue(testItem.sellIn  0);
+		assertTrue(testItem.sellIn > 0);
 
 	}
 	//    "Backstage passes", like aged brie, increases in Quality as it's SellIn value approaches;
