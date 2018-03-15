@@ -125,11 +125,30 @@ public class GildedRoseTest {
 
 		//assert
 		assertTrue(testItem.sellIn > 0);
-
 	}
 	//    "Backstage passes", like aged brie, increases in Quality as it's SellIn value approaches;
-	// Quality increases by 2 when there are 10 days or less and by 3 when there are 5 days or less but
+	// Quality increases by 2 when there are 10 days or less
+    public void tenDaysIncrease_BackstagePasses(){
+	    //arrange
+        String name ="Backstage passes";
+        int iniSellIn = 10;
+        int iniQuality = 2;
+        int finalQuality = 4;
+        Item testItem = new Item(name,iniSellIn,iniQuality);
+
+        //act
+        GildedRose gR = new GildedRose(testItem);
+        gR.updateQuality();
+
+        //assert
+        assertTrue(testItem.getQuality() == finalQuality);
+
+    }
+
+
+    // and by 3 when there are 5 days or less but
 	// Quality drops to 0 after the concert
+
 
 
 }
