@@ -115,12 +115,6 @@ public class GildedRose {
 
             processDay(items.get(i));
 
-            //if(!isLegendary(items.get(i)))
-            //{
-            //    decreaseDay(items.get(i));
-           // }
-
-
 
             if (items.get(i).getSellIn() < 0)
             {
