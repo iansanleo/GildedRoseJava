@@ -47,6 +47,12 @@ public class GildedRose {
         quality++;
         item.setQuality(quality);
         return true;
+    private void increaseQuality(Item item){
+        if (item.getQuality() < topQuality) {
+            int quality = item.getQuality();
+            quality++;
+            item.setQuality(quality);
+        }
     }
     private boolean isBrie (Item item){
 	    if(item.name.equals("Aged Brie")){
@@ -91,9 +97,9 @@ public class GildedRose {
             }
             else
             {
-                if (items.get(i).getQuality() < topQuality)
+                increaseQuality(items.get(i));
+                
                 {
-                    increaseQuality(items.get(i));
 
                     if(isBackstagePass(items.get(i)))
                     {
@@ -109,10 +115,6 @@ public class GildedRose {
                         if (items.get(i).getSellIn() < 6)
                         {
 
-                            if (items.get(i).getQuality() < topQuality)
-                            {
-                                increaseQuality(items.get(i));
-                            }
                         }
                     }
                 }
@@ -148,10 +150,7 @@ public class GildedRose {
                 }
                 else
                 {
-                    if (items.get(i).getQuality() < topQuality)
-                    {
                         increaseQuality(items.get(i));
-                    }
                 }
             }
         }
