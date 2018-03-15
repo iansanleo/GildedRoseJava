@@ -5,6 +5,7 @@ import java.util.List;
 public class GildedRose {
 
 	private List<Item> items = null;
+    private String legendary = "Sulfuras, Hand of Ragnaros";
 
 	public void main(String[] args) {
 		
@@ -25,7 +26,11 @@ public class GildedRose {
 	    items = new ArrayList<>();
 	    items.add(item);
     }
-	
+
+    private boolean isLegendary (Item item){
+	    return legendary.contentEquals(item.name);
+    }
+
     public void updateQuality()
     {
         for (int i = 0; i < items.size(); i++)
@@ -34,7 +39,7 @@ public class GildedRose {
             {
                 if (items.get(i).getQuality() > 0)
                 {
-                    if (!"Sulfuras, Hand of Ragnaros".equals(items.get(i).getName()))
+                    if(!isLegendary(items.get(i)))
                     {
                         items.get(i).setQuality(items.get(i).getQuality() - 1);
                     }
@@ -66,8 +71,7 @@ public class GildedRose {
                     }
                 }
             }
-
-            if (!"Sulfuras, Hand of Ragnaros".equals(items.get(i).getName()))
+            if(!isLegendary(items.get(i)))
             {
                 items.get(i).setSellIn(items.get(i).getSellIn() - 1);
             }
@@ -80,7 +84,7 @@ public class GildedRose {
                     {
                         if (items.get(i).getQuality() > 0)
                         {
-                            if (!"Sulfuras, Hand of Ragnaros".equals(items.get(i).getName()))
+                            if(!isLegendary(items.get(i)))
                             {
                                 items.get(i).setQuality(items.get(i).getQuality() - 1);
                             }
