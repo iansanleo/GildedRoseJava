@@ -50,12 +50,18 @@ public class GildedRose {
         }
 	    return false;
     }
+    private boolean isBackstagePass (Item item){
+	    if(item.name.equals("Backstage passes to a TAFKAL80ETC concert")){
+	        return true;
+        }
+        return false;
+    }
 
 
     public void updateQuality()
     {
         for (int i = 0; i < items.size(); i++)
-        {   if(!isBrie(items.get(i))&&!"Backstage passes to a TAFKAL80ETC concert".equals(items.get(i).getName()))
+            if(!isBrie(items.get(i))&&! isBackstagePass(items.get(i)))
             {
                 if (items.get(i).getQuality() > minQuality)
                 {
@@ -71,7 +77,7 @@ public class GildedRose {
                 {
                     increaseQuality(items.get(i));
 
-                    if ("Backstage passes to a TAFKAL80ETC concert".equals(items.get(i).getName()))
+                    if(isBackstagePass(items.get(i)))
                     {
                         if (items.get(i).getSellIn() < 11)
                         {
@@ -101,7 +107,7 @@ public class GildedRose {
             {
                 if (!isBrie(items.get(i)))
                 {
-                    if (!"Backstage passes to a TAFKAL80ETC concert".equals(items.get(i).getName()))
+                    if(!isBackstagePass(items.get(i)))
                     {
                         if (items.get(i).getQuality() > minQuality)
                         {
