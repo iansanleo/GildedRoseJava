@@ -48,7 +48,7 @@ public class GildedRose {
         }
     }
 
-    
+
     private boolean isBrie (Item item){
 	    return item.name.equals("Aged Brie");
     }
@@ -80,6 +80,16 @@ public class GildedRose {
         }
 
     }
+    private void processItemQuality(Item item){
+        if (item.getQuality() > minQuality)
+        {
+            if(!isLegendary(item))
+            {
+                decreaseQuality(item);
+            }
+        }
+
+    }
 
 
 
@@ -92,13 +102,7 @@ public class GildedRose {
 
             if(!isBrie(items.get(i)) && !isBackstagePass(items.get(i)))
             {
-                if (items.get(i).getQuality() > minQuality)
-                {
-                    if(!isLegendary(items.get(i)))
-                    {
-                        decreaseQuality(items.get(i));
-                    }
-                }
+                processItemQuality(items.get(i));
             }
             else
             {
@@ -115,13 +119,7 @@ public class GildedRose {
 
             if (items.get(i).getSellIn() < 0)
             {
-                if (items.get(i).getQuality() > minQuality)
-                {
-                    if(!isLegendary(items.get(i)))
-                    {
-                        decreaseQuality(items.get(i));
-                    }
-                }
+                processItemQuality(items.get(i));
 
                 if(isBackstagePass(items.get(i)))
                 {
