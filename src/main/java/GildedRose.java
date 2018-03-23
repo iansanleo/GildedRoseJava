@@ -5,9 +5,11 @@ import java.util.List;
 public class GildedRose {
 
 	private List<Item> items = null;
-    private String legendary = "Sulfuras, Hand of Ragnaros";
-    private int topQuality = 50;
-    private int minQuality = 0;
+    private static String LEGENDARY = "Sulfuras, Hand of Ragnaros";
+    private static String BRIE ="Aged Brie";
+    private static String TICKETS ="Backstage passes to a TAFKAL80ETC concert";
+    private static int TOPQUALITY = 50;
+    private static int MINQUALITY = 0;
 
 	public void main(String[] args) {
 		
@@ -41,7 +43,7 @@ public class GildedRose {
         item.setQuality(quality);
     }
     private void increaseQuality(Item item){
-        if (item.getQuality() < topQuality) {
+        if (item.getQuality() < TOPQUALITY) {
             int quality = item.getQuality();
             quality++;
             item.setQuality(quality);
@@ -50,13 +52,13 @@ public class GildedRose {
 
 
     private boolean isBrie (Item item){
-	    return item.name.equals("Aged Brie");
+	    return BRIE.equals(item.name);
     }
     private boolean isBackstagePass (Item item){
-	    return item.name.equals("Backstage passes to a TAFKAL80ETC concert");
+	    return TICKETS.equals(item.name);
     }
     private boolean isLegendary (Item item){
-        return legendary.contentEquals(item.name);
+        return LEGENDARY.contentEquals(item.name);
     }
 
 
@@ -81,7 +83,7 @@ public class GildedRose {
 
     }
     private void processItemQuality(Item item){
-        if (item.getQuality() > minQuality)
+        if (item.getQuality() > MINQUALITY)
         {
             if(!isLegendary(item))
             {
@@ -123,7 +125,7 @@ public class GildedRose {
 
                 if(isBackstagePass(items.get(i)))
                 {
-                    items.get(i).setQuality(minQuality);
+                    items.get(i).setQuality(MINQUALITY);
                 }
 
                 if(isBrie(items.get(i)))
