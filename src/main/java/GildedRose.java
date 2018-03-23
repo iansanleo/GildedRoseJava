@@ -92,7 +92,22 @@ public class GildedRose {
         }
 
     }
+    private void checkSellIn(Item item){
+	    if (item.getSellIn() < 0)
+	    {
+            processItemQuality(item);
 
+            if(isBackstagePass(item))
+            {
+                item.setQuality(MINQUALITY);
+            }
+
+            if(isBrie(item))
+            {
+                increaseQuality(item);
+            }
+        }
+    }
 
 
     public void updateQuality()
@@ -118,21 +133,8 @@ public class GildedRose {
 
             processDay(items.get(i));
 
+            checkSellIn(items.get(i));
 
-            if (items.get(i).getSellIn() < 0)
-            {
-                processItemQuality(items.get(i));
-
-                if(isBackstagePass(items.get(i)))
-                {
-                    items.get(i).setQuality(MINQUALITY);
-                }
-
-                if(isBrie(items.get(i)))
-                {
-                    increaseQuality(items.get(i));
-                }
-            }
         }
     }
 
