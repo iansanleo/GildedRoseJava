@@ -92,7 +92,8 @@ public class GildedRose {
         }
 
     }
-    private void checkSellIn(Item item){
+
+    private boolean checkSellIn(Item item){
 	    if (item.getSellIn() < 0)
 	    {
             processItemQuality(item);
@@ -100,42 +101,43 @@ public class GildedRose {
             if(isBackstagePass(item))
             {
                 item.setQuality(MINQUALITY);
+                return true;
             }
 
             if(isBrie(item))
             {
                 increaseQuality(item);
+                return true;
             }
         }
+        return true;
     }
 
+    public boolean checkQuality(Item item)
+    {
+        if (!isBrie(item) && !isBackstagePass(item)) {
+            processItemQuality(item);
+            return true;
+        }
+
+        increaseQuality(item);
+
+        if (isBackstagePass(item)) {
+            process_BaskstagePass_Quality(item);
+        }
+        return true;
+    }
 
     public void updateQuality()
     {
 
         for (int i = 0; i < items.size(); i++){
 
-
-
-            if(!isBrie(items.get(i)) && !isBackstagePass(items.get(i)))
-            {
-                processItemQuality(items.get(i));
-            }
-            else
-            {
-                increaseQuality(items.get(i));
-
-                if(isBackstagePass(items.get(i)))
-                {
-                    process_BaskstagePass_Quality(items.get(i));
-               }
-            }
+            checkQuality(items.get(i));
 
             processDay(items.get(i));
 
             checkSellIn(items.get(i));
-
         }
     }
-
 }
