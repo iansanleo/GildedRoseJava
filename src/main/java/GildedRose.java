@@ -70,18 +70,16 @@ public class GildedRose {
     }
 
     private void process_BaskstagePass_Quality(Item item){
-
-	    if (item.getSellIn() < 11)
+	    if (item.getSellIn() < 6)
         {
+            increaseQuality(item);
+            if (item.getSellIn() < 11)
+            {
                 increaseQuality(item);
+            }
         }
-
-        if (item.getSellIn() < 6)
-        {
-                increaseQuality(item);
-        }
-
     }
+
     private void processItemQuality(Item item){
         if (item.getQuality() > MINQUALITY)
         {
@@ -90,7 +88,6 @@ public class GildedRose {
                 decreaseQuality(item);
             }
         }
-
     }
 
     private boolean checkSellIn(Item item){
@@ -110,7 +107,7 @@ public class GildedRose {
                 return true;
             }
         }
-        return true;
+        return false;
     }
 
     public boolean checkQuality(Item item)
@@ -128,9 +125,12 @@ public class GildedRose {
         return true;
     }
 
+
+
+
+
     public void updateQuality()
     {
-
         for (int i = 0; i < items.size(); i++){
 
             checkQuality(items.get(i));
